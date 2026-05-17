@@ -27,18 +27,15 @@ def preprocess_data(df):
     return df
 
 if __name__ == "__main__":
-    # Tentukan path (sesuaikan jika disimpan di dalam folder)
     w_path = "ebay_womens_perfume.csv"
     m_path = "ebay_mens_perfume.csv"
     
-    # Proses
     print("Memulai data loading...")
     raw_df = load_data(w_path, m_path)
     
     print("Memulai proses preprocessing...")
     clean_df = preprocess_data(raw_df)
-    
-    # Menyimpan dataset bersih
+
     output_path = "dataset_cleaned.csv"
     clean_df.to_csv(output_path, index=False)
     print(f"Selesai! Data siap latih telah disimpan di: {output_path}")
