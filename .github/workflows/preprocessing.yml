@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -33,5 +35,9 @@ jobs:
           
           git add preprocessing/dataset_preprocessing.csv
           git commit -m "Automated preprocessing: Generate dataset_preprocessing.csv" || echo "No changes to commit"
-          git pull --rebase origin main
-          git push
+          
+          # Unduh dan gabungkan perubahan terbaru
+          git pull origin main --rebase
+          
+          # Push secara eksplisit
+          git push origin HEAD:main
