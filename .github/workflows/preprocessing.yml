@@ -25,7 +25,6 @@ jobs:
 
       - name: Run Automation Script
         run: |
-          # Perintahkan robot menjalankan script di dalam folder preprocessing
           python preprocessing/automate_Rania.py
 
       - name: Commit and Push Cleaned Data
