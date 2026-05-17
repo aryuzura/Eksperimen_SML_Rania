@@ -40,3 +40,4 @@ if __name__ == "__main__":
     
     clean_df.to_csv(output_path, index=False)
     print(f"Selesai! Data siap latih telah disimpan di: {output_path}")
+# pancingan
