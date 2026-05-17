@@ -36,6 +36,7 @@ if __name__ == "__main__":
     print("Memulai proses preprocessing...")
     clean_df = preprocess_data(raw_df)
 
-    output_path = "dataset_preprocessing.csv"
+    output_path = "preprocessing/dataset_preprocessing.csv"
+    
     clean_df.to_csv(output_path, index=False)
     print(f"Selesai! Data siap latih telah disimpan di: {output_path}")
