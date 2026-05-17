@@ -9,11 +9,14 @@ on:
 jobs:
   preprocess:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           ref: main
+          fetch-depth: 0 
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -33,11 +36,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          git add preprocessing/dataset_preprocessing.csv
-          git commit -m "Automated preprocessing: Generate dataset_preprocessing.csv" || echo "No changes to commit"
-          
-          # Unduh dan gabungkan perubahan terbaru
           git pull origin main --rebase
-          
-          # Push secara eksplisit
-          git push origin HEAD:main
+          git add preprocessing/dataset_preprocessing.csv
+
+          git commit -m "Automated preprocessing: Generate dataset_preprocessing.csv" || echo "No changes to commit"
+
+          git push origin main
