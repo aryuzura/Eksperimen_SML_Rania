@@ -3,7 +3,6 @@ name: Data Preprocessing Automation
 on:
   push:
     paths:
-      # Ubah sensor path ke folder baru
       - 'dataset_raw/**.csv'
       - 'preprocessing/automate_Rania.py'
 
