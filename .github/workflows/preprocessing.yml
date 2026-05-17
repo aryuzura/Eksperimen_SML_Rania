@@ -1,0 +1,35 @@
+name: Data Preprocessing Automation
+
+on:
+  push:
+    paths:
+      - '**.csv'
+      - 'automate_Rania.py'
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.7'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas scikit-learn
+
+      - name: Run Automation Script
+        run: |
+          python automate_Rania.py
+
+      - name: Commit and Push Cleaned Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dataset_cleaned.csv
+          git commit -m "Automated preprocessing: Generate dataset_cleaned.csv" || echo "No changes to commit"
+          git push
