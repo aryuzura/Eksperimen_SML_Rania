@@ -3,8 +3,9 @@ name: Data Preprocessing Automation
 on:
   push:
     paths:
-      - '**.csv'
-      - 'automate_Rania.py'
+      # Ubah sensor path ke folder baru
+      - 'dataset_raw/**.csv'
+      - 'preprocessing/automate_Rania.py'
 
 jobs:
   preprocess:
@@ -24,12 +25,15 @@ jobs:
 
       - name: Run Automation Script
         run: |
-          python automate_Rania.py
+          # Perintahkan robot menjalankan script di dalam folder preprocessing
+          python preprocessing/automate_Rania.py
 
       - name: Commit and Push Cleaned Data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dataset_preprocessing.csv
+          
+          # Ubah alamat file yang akan di-commit
+          git add preprocessing/dataset_preprocessing.csv
           git commit -m "Automated preprocessing: Generate dataset_preprocessing.csv" || echo "No changes to commit"
           git push
