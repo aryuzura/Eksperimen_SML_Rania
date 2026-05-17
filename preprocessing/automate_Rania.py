@@ -27,8 +27,8 @@ def preprocess_data(df):
     return df
 
 if __name__ == "__main__":
-    w_path = "ebay_womens_perfume.csv"
-    m_path = "ebay_mens_perfume.csv"
+    w_path = "dataset_raw/ebay_womens_perfume.csv"
+    m_path = "dataset_raw/ebay_mens_perfume.csv"
     
     print("Memulai data loading...")
     raw_df = load_data(w_path, m_path)
@@ -36,6 +36,6 @@ if __name__ == "__main__":
     print("Memulai proses preprocessing...")
     clean_df = preprocess_data(raw_df)
 
-    output_path = "dataset_cleaned.csv"
+    output_path = "dataset_preprocessing.csv"
     clean_df.to_csv(output_path, index=False)
     print(f"Selesai! Data siap latih telah disimpan di: {output_path}")
